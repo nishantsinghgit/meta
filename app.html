@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Meta Business Solutions – Nishant Singh Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f0ddb0;
+    --orange: #e8714a;
+    --text-dark: #2c1f10;
+    --text-mid: #5a3e28;
+    --font: 'Nunito', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='60,2 118,34 118,70 60,102 2,70 2,34' fill='none' stroke='%23c8a96e' stroke-width='1.2' opacity='0.35'/%3E%3C/svg%3E");
+    background-size: 120px 104px;
+    font-family: var(--font);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* ─── ORANGE CARD ─── */
+  .card {
+    background: var(--orange);
+    border-radius: 20px;
+    padding: 2rem 1.75rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpolygon points='60,2 118,34 118,70 60,102 2,70 2,34' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 120px 104px;
+    pointer-events: none;
+  }
+
+  /* ─── VIDEO ─── */
+  .video-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .video-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .card h2 {
+    font-size: clamp(1.25rem, 4vw, 1.7rem);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── PILL BUTTON ─── */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255,255,255,0.9);
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-pill:hover { background: rgba(255,255,255,0.15); }
+
+  /* ─── CHECKLIST ─── */
+  .checklist-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .checklist li {
+    font-size: 15px;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .checklist li::before { content: '✓ '; font-weight: 900; }
+
+  .zero-note {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── DOWN ARROW ─── */
+  .down-arrow {
+    display: flex;
+    justify-content: center;
+  }
+
+  .down-arrow-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    font-size: 20px;
+  }
+
+  /* ─── PROFILE ─── */
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .profile-img-placeholder {
+    width: 200px;
+    height: 240px;
+    border-radius: 14px;
+    background: rgba(232,113,74,0.12);
+    border: 2px dashed var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: var(--orange);
+  }
+
+  .profile-section h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+
+  .about-label {
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .about-bullets {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .about-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text-mid);
+  }
+
+  .about-bullets li .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 380px;
+  }
+
+  thead tr { border-bottom: 2px solid var(--orange); }
+
+  thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 900;
+    color: var(--orange);
+  }
+
+  tbody tr { border-bottom: 1px solid rgba(90,62,40,0.1); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 11px 12px;
+    color: var(--text-mid);
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  tbody td:first-child { color: var(--text-dark); font-weight: 700; }
+
+  /* ─── CARD BODY TEXT ─── */
+  .card p.body-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+    line-height: 1.65;
+  }
+
+  .mentor-img-placeholder {
+    width: 100%;
+    height: 260px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ═══ HERO CARD ═══ -->
+  <div class="card reveal">
+    <div class="video-embed">
+      <iframe
+        src="C:\Users\Nishant\Desktop\meta\WhatsApp Video 2026-04-13 at 15.49.23.mp4"
+        title="Meta Ads Solutions"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <h2>Watch ↑ Solutions ﹘ Every Business Owner burning ₹ on Meta ads Without any Results</h2>
+
+    <a href="#" class="btn-pill">Fill form →</a>
+
+    <p class="checklist-label">Fill form to Get -</p>
+    <ul class="checklist">
+      <li>Personal account diagnosis — free</li>
+      <li>Exact problem identification</li>
+      <li>Assured profit strategy</li>
+      <li>WhatsApp access to me directly</li>
+    </ul>
+    <p class="zero-note">"Zero fees. Zero obligation."</p>
+  </div>
+
+  <!-- ═══ DOWN ARROW ═══ -->
+  <div class="down-arrow reveal">
+    <div class="down-arrow-circle">↓</div>
+  </div>
+
+  <!-- ═══ PROFILE ═══ -->
+  <div class="profile-section reveal">
+    <div class="profile-img-placeholder"><img src="Indian man, straight forward facing webcam portrait, sitting upright directly f_cleanup.png" alt="Nishant Singh Chauhan" class="profile-img" style="width: 220px; height: 240px;"/></div>
+    <h3>Hi Brand Owners, I'm NISHANT SINGH CHAUHAN</h3>
+    <p class="about-label">About me -</p>
+    <ul class="about-bullets">
+      <li><span class="dot"></span>Trained under Yogesh Sharma Sir — India's Meta Ad Tycoon — Mentor of India's Largest EdTech Brand</li>
+      <li><span class="dot"></span>₹2 Crore+ Ad spend managed under him.</li>
+      <li><span class="dot"></span>CPA Marketer in adult industry — CrackRevenue, Reinmaker &amp; MaxMounty</li>
+    </ul>
+  </div>
+
+  <!-- ═══ TABLE ═══ -->
+  <div class="reveal">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Features</th>
+            <th>Other Agency</th>
+            <th>Me</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Claim</td><td>10x ROI -guarantee</td><td>1.8-5x ROI- guarantee✘ assurity✓</td></tr>
+          <tr><td>Primary Features</td><td>Managing Ad Account</td><td>Managing Your Business Logic</td></tr>
+          <tr><td>Tracking</td><td>Pixels</td><td>CAPI, FREE Tracker worth ₹2L, Offline Event</td></tr>
+          <tr><td>Skillset</td><td>Technical only</td><td>Consumer Psychological, Creative strategy, Expert's Guidance</td></tr>
+          <tr><td>The 'EDGE'</td><td>Finding a Hack</td><td>Superior Offer, Sir's Strategy</td></tr>
+          <tr><td>Targeting</td><td>Manual audience / lookalike</td><td>Direct Competitors followers / Broad</td></tr>
+          <tr><td>Creatives</td><td>Pretty — subjective</td><td>Data & AI driven — to analyze lead's psychology</td></tr>
+          <tr><td>Bidding</td><td>Manual CPM/CPC</td><td>Value based. AI get users with high LTV</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ MENTOR CARD ═══ -->
+  <div class="card reveal">
+    <h2>Yogesh Sharma Sir</h2>
+
+    <div class="mentor-img-placeholder"><img src="Whisk_39d71113e80633ba84c4d2e6eca1ea31dr (1).png" class="profile-img" style="width: 225px; height: 257px;"/></div>
+
+    <p class="body-text">Sir's 17 Years of Facebook Ads Advice - Advanced Training with Real Techniques</p>
+
+    <div class="video-embed" style="margin-bottom:1.5rem;">
+       <!-- Video 2 thumbnail → YouTube lightbox -->
+      <a href="https://www.youtube.com/watch?v=M0P_-FK2qZg" target="_blank" style="display:block;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;margin-bottom:1.5rem;position:relative;z-index:1;cursor:pointer;text-decoration:none;">
+      <img src="Koi technical jargon nahi. Koi complexity nahi. Sirf aapki problems. Sirf unke solutions.......png" style="width: 550px; height: 255px;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;">▶</div>
+    </a>
+    </div>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfh4ngJbqv3XKEFmrUcQaYv26pW1AENryPEev9amF-FR1VfoQ/viewform?pli=1"
+       target="_blank"
+       class="btn-pill"
+       style="font-size:14px; padding:11px 22px;">
+      Contact Sir - If ₹30L+ budget ↗
+    </a>
+  </div>
+
+</div>
+
+<footer></footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
